@@ -5,6 +5,7 @@
 
 var updateCount = -1;
 
+//	Looks through data to see if there were any changes made and updates lists accordingly
 function HandleChangeList(data) {
 	let current = $("#todo-list").children();
 	current = $.merge(current, $("#completed-list").children());
@@ -45,6 +46,7 @@ function HandleChangeList(data) {
 
 }
 
+//	Looks through data to see if there are any missing values, meaning that they should be deleted from the list
 function HandleDeleteList(data) {
 	deleteList = [];
 
@@ -74,14 +76,12 @@ function HandleDeleteList(data) {
 	}
 }
 
+//	Looks through new data to see if there are any new items to add to the todo list
 function HandleAddList(data) {
 	addList = [];
 
 	let current = $("#todo-list").children().toArray();
 	current = current.concat($("#completed-list").children().toArray());
-
-	//for (let i = 0; i < current.length; i++)
-	//	current[i] = current[i].querySelector('.id').innerText;
 
 	for (let i = 0; i < data.length; i++) {
 		let found = false;
@@ -132,8 +132,6 @@ function UpdateLists() {
 		//success: function(data){ console.log(data); },
 		failure: function(errMsg) { console.log(errMsg); }
 	}).then(function(data) {
-		//$("#todo-list").html(data);
-		
 		HandleAddList(data);
 		HandleDeleteList(data);
 		HandleChangeList(data);
