@@ -1,0 +1,13 @@
+<!--*****************************
+*	Name:		Wesley Paglia	*
+*	Student ID:	300516239		*
+******************************-->
+
+<!--	TodoList	-->
+
+
+<% for(let i = 0; i < todos.length; i++) { %>
+	<% if(!todos[i].done) { %>
+		<li><span class="done">%</span><span class="delete">x</span><span class="edit">r</span><span class="task"><%= todos[i].task %></span><span class="id"><%= todos[i].id %></span><span class="username"><%= todos[i].username %></span></li>
+	<% } %>
+<% } %>
